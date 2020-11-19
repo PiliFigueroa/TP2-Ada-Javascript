@@ -9,7 +9,7 @@ const precioMaquina = (componentes) => {
     let suma = 0;
     local.precios.filter(element => {
         for (let i = 0; i < componentes.length; i++) {
-            if(element.componente.includes(componentes[i])){
+            if(element.componente === componentes[i]){
                 suma += element.precio;
             }
         }
@@ -136,3 +136,63 @@ const huboVentas = (mes, anio) => {
 /* ---------- PARTE 2 ---------- */
 /* ============================= */
 
+// Crear la función ventasSucursal(sucursal), que obtiene las ventas totales realizadas por una sucursal sin límite de fecha.
+
+const ventasSucursal = (sucursal) => {
+    const {ventas} = local;
+    let suma = 0;
+    for (venta of ventas) {
+        if (venta.sucursal === sucursal) {
+            suma += precioMaquina(venta.componentes);
+        }
+    }
+    return suma;
+}
+
+// Las funciones ventasSucursal y ventasVendedora tienen mucho código en común, ya que es la misma
+// funcionalidad pero trabajando con una propiedad distinta. Entonces,
+// ¿cómo harías para que ambas funciones reutilicen código y evitemos repetir?
+
+const ventasFiltradas = (filtro) => {
+    let suma = 0;
+    const {ventas} = local;
+    for (venta of ventas) {
+        if (venta.sucursal === filtro || venta.nombreVendedora === filtro) {
+            suma += precioMaquina(venta.componentes);
+        }
+    }
+    return suma;
+}
+
+// Crear la función sucursalDelMes(mes, anio), que se le pasa dos parámetros numéricos, (mes, anio) y devuelve
+// el nombre de la sucursal que más vendió en plata en el mes. No cantidad de ventas, sino importe total de las ventas.
+// El importe de una venta es el que indica la función precioMaquina. El mes es un número entero que va desde el 1 (enero)
+// hasta el 12 (diciembre).
+
+const sucursalDelMes = (mes, anio) => {
+    const {sucursales} = local;
+    let ventaPorSucursal = [];
+    sucursales.forEach(sucursal => {
+        ventaPorSucursal.push({
+            sucursal: sucursal,
+            ventaPorMes: sucursalPorMes(sucursal, mes, anio)
+        });
+    });
+    let maximaVenta = maximo("ventaPorMes", ventaPorSucursal);
+    return maximaVenta.sucursal;
+}
+
+const sucursalPorMes = (sucursal, mes, anio) => {
+    const {ventas} = local; 
+    let suma = 0;
+    for (venta of ventas) {
+        if (venta.sucursal === sucursal && (venta.fecha.getMonth() === mes && venta.fecha.getFullYear() === anio)) {
+            suma += precioMaquina(venta.componentes);
+        }
+    }
+    return suma;
+}
+
+/* ============================= */
+/* ---------- PARTE 3 ---------- */
+/* ============================= */
