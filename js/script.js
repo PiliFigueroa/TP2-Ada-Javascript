@@ -1,3 +1,7 @@
+/* ============================= */
+/* ---------- PARTE 1 ---------- */
+/* ============================= */
+
 // precioMaquina(componentes): recibe un array de componentes y devuelve el precio de la máquina que se puede armar con esos componentes,
 // que es la suma de los precios de cada componente incluido.
 
@@ -33,7 +37,7 @@ const cantidadVentasComponente = (componente) => {
 // El importe de una venta es el que indica la función precioMaquina. El mes es un número entero que va desde
 // el 1 (enero) hasta el 12 (diciembre).
 
-const vendedoraPorMes = (vendedora, mes, anio) => {
+const vendedoraPorMes = (vendedora, mes, anio) => { // Esta funcion es para reutilizarla en la que pide el ejercicio
     const {ventas} = local; 
     let suma = 0;
     for (venta of ventas) {
@@ -44,9 +48,8 @@ const vendedoraPorMes = (vendedora, mes, anio) => {
     return suma;
 }
 
-const vendedoraDelMes = (mes, anio) => {   
+const vendedoraDelMes = (mes, anio) => {   // Funcion que pide el ejercicio
     const {vendedoras} = local;
-    // console.log(vendedoras);
     let ventaPorVendedora = [];
     vendedoras.forEach(vendedora => {
         ventaPorVendedora.push({
@@ -62,7 +65,7 @@ const vendedoraDelMes = (mes, anio) => {
     }
 }
 
-const maximo = (prop, array) => {
+const maximo = (prop, array) => { // Funcion para devolver el valor maximo
     let valorMinimo = array[0][prop];
     let valorMaximo = array[0];
 
@@ -128,3 +131,8 @@ const huboVentas = (mes, anio) => {
         return false;
     }
 }
+
+/* ============================= */
+/* ---------- PARTE 2 ---------- */
+/* ============================= */
+
