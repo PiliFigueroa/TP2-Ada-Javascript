@@ -9,7 +9,7 @@ const precioMaquina = (componentes) => {
     let suma = 0;
     local.precios.filter(element => {
         for (let i = 0; i < componentes.length; i++) {
-            if(element.componente.includes(componentes[i])){
+            if(element.componente === componentes[i]){
                 suma += element.precio;
             }
         }
