@@ -136,3 +136,19 @@ const huboVentas = (mes, anio) => {
 /* ---------- PARTE 2 ---------- */
 /* ============================= */
 
+// Crear la función ventasSucursal(sucursal), que obtiene las ventas totales realizadas por una sucursal sin límite de fecha.
+
+const ventasSucursal = (sucursal) => {
+    const {ventas} = local;
+    let suma = 0;
+    // console.log(precioMaquina(["Motherboard ASUS 1500", "RAM Quinston"])); => Me sale duplicado, deberia dar 230 y da 460
+    for (venta of ventas) {
+        // if (venta.sucursal === sucursal) {
+        //     console.log(sucursal + " " + precioMaquina(venta.componentes));
+        // }
+        if (venta.sucursal === sucursal) {
+            suma += precioMaquina(venta.componentes);
+        }
+    };
+    return suma;
+}
