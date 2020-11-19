@@ -54,19 +54,6 @@ const vendedoraDelMes = (mes, anio) => {
             ventaPorMes: vendedoraPorMes(vendedora, mes, anio)
         });
     });
-    // const maximo = (prop) => {
-    //     let valorMinimo = ventaPorVendedora[0][prop];
-    //     let empleada = ventaPorVendedora[0];
-    
-    //     for (i = 0; i < ventaPorVendedora.length; i++) {
-    //         let valor = ventaPorVendedora[i][prop];
-    //         if (valorMinimo < valor) {
-    //             valorMinimo = valor;
-    //             empleada = ventaPorVendedora[i];
-    //         }
-    //     }
-    //     return empleada;
-    // }
     let ganadora = maximo("ventaPorMes", ventaPorVendedora);
     if (ganadora.ventaPorMes === 0) {
         return "Este mes no hubo ganadora";
