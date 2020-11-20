@@ -196,3 +196,30 @@ const sucursalPorMes = (sucursal, mes, anio) => {
 /* ============================= */
 /* ---------- PARTE 3 ---------- */
 /* ============================= */
+
+// renderPorMes(): Muestra una lista ordenada del importe total vendido por cada mes/año
+
+const renderPorMes = (year) => {
+    const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+    console.log("Ventas por mes:") 
+    meses.forEach((key, value) => {
+        console.log(`Venta de ${key} en ${year}: `, ventasMes(value, year));
+    });
+}
+
+// renderPorSucursal(): Muestra una lista del importe total vendido por cada sucursal
+
+const renderPorSucursal = () => {
+    const {sucursales} = local;
+    console.log(sucursales);
+    sucursales.forEach(key => {
+        console.log(`Venta de ${key}: `, ventasSucursal(key));
+    });
+}
+
+// render(): Tiene que mostrar la unión de los dos reportes anteriores,
+// cual fue el producto más vendido y la vendedora que más ingresos generó
+
+const render = () => {
+    
+}
