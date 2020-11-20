@@ -211,7 +211,6 @@ const renderPorMes = (year) => {
 
 const renderPorSucursal = () => {
     const {sucursales} = local;
-    console.log(sucursales);
     sucursales.forEach(key => {
         console.log(`Venta de ${key}: `, ventasSucursal(key));
     });
@@ -220,6 +219,16 @@ const renderPorSucursal = () => {
 // render(): Tiene que mostrar la unión de los dos reportes anteriores,
 // cual fue el producto más vendido y la vendedora que más ingresos generó
 
+// Reporte
+// Ventas por mes:
+//   Total de enero 2019: 1250
+//   Total de febrero 2019: 4210
+// Ventas por sucursal:
+//   Total de Centro: 4195
+//   Total de Caballito: 1265
+// Producto estrella: Monitor GPRS 3000
+// Vendedora que más ingresos generó: Grace
+
 const render = () => {
-    
+
 }
