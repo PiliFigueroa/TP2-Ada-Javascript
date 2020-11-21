@@ -39,6 +39,7 @@ const cantidadVentasComponente = (componente) => {
 // el 1 (enero) hasta el 12 (diciembre).
 
 const vendedoraPorMes = (vendedora, mes, anio) => { // Esta funcion es para reutilizarla en la que pide el ejercicio
+    mes--;
     const {ventas} = local; 
     let suma = 0;
     for (venta of ventas) {
@@ -83,6 +84,7 @@ const maximo = (prop, array) => { // Funcion para devolver el valor maximo
 // ventasMes(mes, anio): Obtener las ventas de un mes. El mes es un número entero que va desde el 1 (enero) hasta el 12 (diciembre).
 
 const ventasMes = (mes, anio) => {
+    mes--;
     const {ventas} = local;
     let resultado = 0;
     for (venta of ventas) {
@@ -184,6 +186,7 @@ const sucursalDelMes = (mes, anio) => {
 }
 
 const sucursalPorMes = (sucursal, mes, anio) => {
+    mes--;
     const {ventas} = local; 
     let suma = 0;
     for (venta of ventas) {
