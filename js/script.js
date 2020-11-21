@@ -203,7 +203,9 @@ const renderPorMes = (year) => {
     const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
     console.log("Ventas por mes:") 
     meses.forEach((key, value) => {
-        console.log(`Venta de ${key} en ${year}: `, ventasMes(value, year));
+        if (ventasMes(value, year) != 0) {
+            console.log(`Venta de ${key} en ${year}: `, ventasMes(value, year));
+        }
     });
 }
 
@@ -212,7 +214,9 @@ const renderPorMes = (year) => {
 const renderPorSucursal = () => {
     const {sucursales} = local;
     sucursales.forEach(key => {
-        console.log(`Venta de ${key}: `, ventasSucursal(key));
+        if (ventasSucursal(key) != 0) {
+            console.log(`Venta de ${key}: `, ventasSucursal(key));
+        }
     });
 }
 
@@ -229,6 +233,9 @@ const renderPorSucursal = () => {
 // Producto estrella: Monitor GPRS 3000
 // Vendedora que más ingresos generó: Grace
 
-const render = () => {
-
+const render = (year) => {
+    renderPorMes(year);
+    renderPorSucursal();
+    console.log(`Producto estrella:`, componenteMasVendido());
+    console.log(`Vendedora que mas ingresos genero:`, vendedoraDelMes(year));
 }
