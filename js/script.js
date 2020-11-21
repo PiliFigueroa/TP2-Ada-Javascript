@@ -1,3 +1,4 @@
+const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 /* ============================= */
 /* ---------- PARTE 1 ---------- */
 /* ============================= */
@@ -200,10 +201,11 @@ const sucursalPorMes = (sucursal, mes, anio) => {
 // renderPorMes(): Muestra una lista ordenada del importe total vendido por cada mes/año
 
 const renderPorMes = (year) => {
-    const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
     console.log("Ventas por mes:") 
     meses.forEach((key, value) => {
-        console.log(`Venta de ${key} en ${year}: `, ventasMes(value, year));
+        if (ventasMes(value, year) != 0) {
+            console.log(`Venta de ${key} en ${year}: `, ventasMes(value, year));
+        }
     });
 }
 
@@ -211,15 +213,42 @@ const renderPorMes = (year) => {
 
 const renderPorSucursal = () => {
     const {sucursales} = local;
-    console.log(sucursales);
     sucursales.forEach(key => {
-        console.log(`Venta de ${key}: `, ventasSucursal(key));
+        if (ventasSucursal(key) != 0) {
+            console.log(`Venta de ${key}: `, ventasSucursal(key));
+        }
     });
 }
 
 // render(): Tiene que mostrar la unión de los dos reportes anteriores,
 // cual fue el producto más vendido y la vendedora que más ingresos generó
 
-const render = () => {
-    
+// Reporte
+// Ventas por mes:
+//   Total de enero 2019: 1250
+//   Total de febrero 2019: 4210
+// Ventas por sucursal:
+//   Total de Centro: 4195
+//   Total de Caballito: 1265
+// Producto estrella: Monitor GPRS 3000
+// Vendedora que más ingresos generó: Grace
+
+const render = (year) => {
+    renderPorMes(year);
+    renderPorSucursal();
+    console.log(`Producto estrella:`, componenteMasVendido());
+    console.log(`Vendedora que mas ingresos genero:`, vendedoraDelAnio());
+}
+
+const vendedoraDelAnio = () => {
+    const {vendedoras} = local;
+    let vendedoraDelAnio = [];
+    vendedoras.forEach(vendedora => {
+        vendedoraDelAnio.push({
+            vendedora: vendedora,
+            ventaPorAnio: ventasVendedora(vendedora)
+        })
+    });
+    let ganadora = maximo("ventaPorAnio", vendedoraDelAnio);
+    return ganadora.vendedora;
 }
