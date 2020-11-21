@@ -1,3 +1,4 @@
+const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 /* ============================= */
 /* ---------- PARTE 1 ---------- */
 /* ============================= */
@@ -200,7 +201,6 @@ const sucursalPorMes = (sucursal, mes, anio) => {
 // renderPorMes(): Muestra una lista ordenada del importe total vendido por cada mes/año
 
 const renderPorMes = (year) => {
-    const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
     console.log("Ventas por mes:") 
     meses.forEach((key, value) => {
         if (ventasMes(value, year) != 0) {
@@ -237,5 +237,18 @@ const render = (year) => {
     renderPorMes(year);
     renderPorSucursal();
     console.log(`Producto estrella:`, componenteMasVendido());
-    console.log(`Vendedora que mas ingresos genero:`, vendedoraDelMes(year));
+    console.log(`Vendedora que mas ingresos genero:`, vendedoraDelAnio());
+}
+
+const vendedoraDelAnio = () => {
+    const {vendedoras} = local;
+    let vendedoraDelAnio = [];
+    vendedoras.forEach(vendedora => {
+        vendedoraDelAnio.push({
+            vendedora: vendedora,
+            ventaPorAnio: ventasVendedora(vendedora)
+        })
+    });
+    let ganadora = maximo("ventaPorAnio", vendedoraDelAnio);
+    return ganadora.vendedora;
 }
